@@ -1,0 +1,306 @@
+:root {
+    --primary: #3498db;
+    --dark: #2c3e50;
+    --bg: #f4f7f6;
+    --sidebar-width: 260px;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: var(--bg);
+    display: flex;
+    transition: all 0.3s;
+}
+
+/* Sidebar Default (Desktop) */
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--dark);
+    color: white;
+    position: fixed;
+    height: 100vh;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.main-content {
+    margin-left: var(--sidebar-width);
+    flex: 1;
+    padding: 30px;
+    width: calc(100% - var(--sidebar-width));
+}
+
+/* Reusable Components */
+.row { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 20px; }
+.shadow { background: #fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); padding: 20px; }
+.col-1-4 { flex: 1; min-width: 200px; }
+
+/* Table Style */
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; padding: 12px; background: #eee; }
+td { padding: 12px; border-bottom: 1px solid #ddd; }
+tr:hover { background: #f9f9f9; }
+
+/* DRAWER SYSTEM */
+.drawer {
+    position: fixed;
+    top: 0; right: -400px;
+    width: 350px; height: 100%;
+    background: white;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    transition: 0.4s ease;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+}
+.drawer.active { right: 0; }
+.drawer-header { padding: 20px; background: var(--dark); color: white; display: flex; justify-content: space-between; align-items: center; }
+.drawer-header button { background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
+.drawer-body { padding: 20px; overflow-y: auto; }
+
+#overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); display: none; z-index: 1500;
+}
+#overlay.active { display: block; }
+
+/* RESPONSIVE LAYERS */
+
+
+/* --- PERBAIKAN MENU SIDEBAR --- */
+.menu-item {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.menu-label {
+    padding: 12px 20px;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s;
+    color: #ecf0f1;
+}
+
+.menu-label:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* Sub-menu Styling */
+.sub-menu {
+    display: none;
+    background: #1a252f; /* Warna lebih gelap */
+    padding-bottom: 5px;
+}
+
+.sub-menu.active {
+    display: block;
+}
+
+.sub-item {
+    display: block;
+    padding: 8px 20px 8px 40px; /* Indentasi ke kanan */
+    color: #bdc3c7;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.sub-item:hover {
+    color: white;
+    background: var(--primary);
+}
+
+/* --- PERBAIKAN TABS --- */
+.tabs-container {
+    margin-top: 20px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tab-header {
+    display: flex;
+    background: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-link {
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #7f8c8d;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s;
+}
+
+.tab-link:hover {
+    color: var(--primary);
+}
+
+.tab-link.active {
+    color: var(--primary);
+    border-bottom: 3px solid var(--primary);
+    background: white;
+}
+
+/* Konten Tab */
+.tab-content {
+    padding: 20px;
+}
+
+.tab-pane {
+    display: none;
+    line-height: 1.6;
+}
+
+.tab-pane.active {
+    display: block;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- LAYER 700: TOP MENU --- */
+/* --- LAYER 700: TOP MENU FIX --- */
+@media (max-width: 700px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        overflow: visible; /* Penting: agar dropdown tidak terpotong */
+        background: var(--dark);
+    }
+
+    .main-content {
+        margin-left: 0;
+        margin-top: 60px; /* Jarak agar konten tidak tertutup header */
+        width: 100%;
+    }
+
+    .menu-item {
+        position: relative; /* Anchor untuk posisi sub-menu */
+        border-bottom: none;
+        flex: 1; /* Menu membagi rata lebar layar */
+        text-align: center;
+    }
+
+    .menu-label {
+        justify-content: center; /* Teks menu di tengah */
+        padding: 15px 10px;
+    }
+
+    /* CSS untuk Sub-menu agar melayang di bawah */
+    .sub-menu {
+        position: absolute;
+        top: 100%; /* Muncul tepat di bawah menu-label */
+        left: 0;
+        width: 100%; /* Selebar menu utamanya */
+        min-width: 150px;
+        background: #1a252f;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        display: none; /* Default sembunyi */
+        z-index: 9999;
+    }
+
+    .sub-menu.active {
+        display: block; /* Muncul saat class active ditambahkan via JS */
+    }
+
+    .sub-item {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+}
+
+/* --- LAYER 450: BOTTOM MENU --- */
+@media (max-width: 450px) {
+    .sidebar {
+        top: auto;
+        bottom: 0;
+        height: 65px;
+        flex-direction: row;
+        justify-content: space-around;
+        overflow: visible; /* Agar sub-menu bisa muncul ke atas */
+    }
+
+    .main-content {
+        margin-top: 10px;
+        margin-bottom: 80px; /* Beri ruang agar tidak tertutup bottom menu */
+    }
+
+    .menu-label {
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+
+    .menu-label span {
+        display: none; /* Sembunyikan panah ▼ di mobile */
+    }
+
+    /* Sub-menu muncul ke atas (Dropup) pada Bottom Menu */
+    .sub-menu {
+        top: auto;
+        bottom: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+    }
+
+    .sub-item {
+        padding: 12px 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        text-align: center;
+    }
+
+    /* Form Drawer full screen di mobile */
+    .drawer {
+        width: 100%;
+        right: -100%;
+    }
+}
+
+
+#main-table input[type="checkbox"] {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+}
+
+.burger-menu-container .sub-item {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+    font-size: 14px;
+}
+
+.burger-menu-container .sub-item:last-child {
+    border-bottom: none;
+}
+
+#table-container button {
+    border: 1px solid #ddd;
+    background: white;
+    padding: 5px 12px;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+#table-container button:hover {
+    background: #f0f0f0;
+}

@@ -1,0 +1,55 @@
+{
+  "profile": {
+    "name": "Fatih",
+    "role": "Fullstack Developer",
+    "bio": "Belajar setiap hari untuk menjadi lebih baik.",
+    "avatar": "https://via.placeholder.com/150",
+    "location": "Jakarta",
+    "email": "fatih@example.com"
+  },
+  "stats": [
+    { "id": 1, "nama": "akses", "isi": "14", "icon": "https://via.placeholder.com/50/0000FF", "url": "pesan/view/1" },
+    { "id": 2, "nama": "Jam Belajar", "isi": "128", "icon": "https://via.placeholder.com/50/FF0000", "url": "#" },
+    { "id": 3, "nama": "Poin Reputasi", "isi": "2.450", "icon": "https://via.placeholder.com/50/008000", "url": "#" },
+    { "id": 4, "nama": "Peringkat Global", "isi": "112", "icon": "https://via.placeholder.com/50/4B0082", "url": "#" }
+  ],
+  "progress": [
+    { "label": "Mastering React.js", "percent": 25, "value": "17/20 Modul" },
+    { "label": "Mastering React.js", "percent": 45, "value": "17/20 Modul" },
+    { "label": "Mastering React.js", "percent": 55, "value": "17/20 Modul" },
+    { "label": "Fullstack Laravel & Vue", "percent": 45, "value": "9/20 Modul" }
+  ],
+  "table": [
+    { "Kursus": "Belajar Dasar JavaScript", "Status": "Lulus", "Tanggal": "Januari 2024","nilai": "85" },
+    { "Kursus": "Belajar Dasar JavaScript", "Status": "Lulus", "Tanggal": "Januari 2024","nilai": "85" },
+    { "Kursus": "Belajar Dasar JavaScript", "Status": "Lulus", "Tanggal": "Januari 2024","nilai": "85" },
+    { "Kursus": "Belajar Dasar JavaScript", "Status": "Lulus", "Tanggal": "Januari 2024","nilai": "85" },
+    { "Kursus": "Belajar Dasar JavaScript", "Status": "Lulus", "Tanggal": "Januari 2024","nilai": "85" },
+    { "Kursus": "Belajar Dasar JavaScript", "Status": "Lulus", "Tanggal": "Januari 2024","nilai": "85" },
+    { "Kursus": "Belajar Dasar JavaScript", "Status": "Lulus", "Tanggal": "Januari 2024","nilai": "85" },
+    { "Kursus": "Belajar Dasar JavaScript", "Status": "Lulus", "Tanggal": "Januari 2024","nilai": "85" },
+    { "Kursus": "Belajar Dasar JavaScript", "Status": "Lulus", "Tanggal": "Januari 2024","nilai": "85" },
+    { "Kursus": "Belajar Dasar JavaScript", "Status": "Lulus", "Tanggal": "Januari 2024","nilai": "85" },
+    { "Kursus": "Belajar Dasar JavaScript", "Status": "Lulus", "Tanggal": "Januari 2024","nilai": "85" },
+    { "Kursus": "Belajar Dasar JavaScript", "Status": "Lulus", "Tanggal": "Januari 2024","nilai": "85" },
+    { "Kursus": "Frontend Developer Expert", "Status": "Sedang Berjalan", "Tanggal": "Februari 2024","nilai": "85" }
+  ],
+
+"menu": [
+  {
+    "label": "Dashboard",
+    "sub": [
+      { "label": "Analitik", "url": "?Analitik/view/1" },
+      { "label": "Laporan", "url": "?Laporan/view/1" }
+    ]
+  },
+  {
+    "label": "Akademik",
+    "sub": [
+      { "label": "Jadwal", "url": "?Jadwal/view/1" },
+      { "label": "Nilai", "url": "?Nilai/view/1" }
+    ]
+  }
+]
+
+}

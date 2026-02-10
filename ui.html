@@ -1,0 +1,109 @@
+<template id="tmpl-header">
+    <div class="row shadow">
+        <div class="col-1-4">
+            <img class="img" style="max-width:150px; border-radius:8px;" data-src="${avatar}" alt="${name}">
+        </div>
+        <div class="col-3-4">
+            <div class="artikel">
+                <h1>${name}</h1>
+                <p><strong>${role}</strong></p>
+                <p>${bio}</p>
+                <small style="color: #666;">${meta}</small>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="tmpl-card">
+    <div class="col-1-4">
+        <div class="card shadow" onclick="navigate('${url}')">
+            <img data-src="${icon}" style="width:30px; margin-bottom:10px;">
+            <br><strong>${nama}</strong>
+            <div style="font-size: 1.2rem; font-weight: bold; margin-top:5px;">${isi}</div>
+        </div>
+    </div>
+</template>
+
+<template id="tmpl-progress">
+    <div style="margin-bottom:15px;">
+        <p style="margin:5px 0; font-weight: 500;">${label} <span style="float:right; font-size: 0.85rem; color: #666;">${value}</span></p>
+        <div style="background:#eee; height:12px; border-radius:10px; overflow:hidden;">
+            <div style="background:${color}; width:${percent}%; height:100%; transition: 0.8s ease-in-out;"></div>
+        </div>
+    </div>
+</template>
+
+<template id="tmpl-table">
+    <div style="overflow-x:auto; background: #fff; border-radius: 8px; margin-top: 10px;">
+        <table style="width:100%; border-collapse: collapse; min-width: 500px;">
+            <thead>
+                <tr></tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+    </div>
+</template>
+
+<template id="tmpl-menu">
+    <div class="menu-item">
+        <div class="menu-label" onclick="ui.toggleSub(this)">${label} <span style="font-size: 0.8rem;">▼</span></div>
+        <div class="sub-menu">${subItems}</div>
+    </div>
+</template>
+
+<template id="tmpl-tabs">
+    <div class="tabs-container">
+        <div class="tab-header">${headers}</div>
+        <div class="tab-content">${contents}</div>
+    </div>
+</template>
+
+<template id="tmpl-form">
+    <div class="shadow" style="margin-top:20px;">
+        <h3>Edit Data: <span id="form-title">Pilih baris tabel</span></h3>
+        <form id="dynamic-form" class="row">
+            </form>
+        <button onclick="ui.saveForm()" style="margin-top:15px; padding:10px 20px; background:#4CAF50; color:#fff; border:none; border-radius:5px; cursor:pointer;">Simpan Perubahan</button>
+    </div>
+</template>
+
+
+
+
+<template id="tmpl-table-controls">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <select id="table-limit" onchange="ui.handleLimit(this.value)" style="padding: 5px; border-radius: 4px;">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+            <div class="burger-menu-container" style="position: relative;">
+                <button onclick="ui.toggleBurger()" style="padding: 5px 10px; cursor: pointer; background: #eee; border: 1px solid #ccc; border-radius: 4px;">☰ Action</button>
+                <div id="burger-dropdown" style="display: none; position: absolute; top: 100%; left: 0; background: white; border: 1px solid #ddd; box-shadow: 0 4px 8px rgba(0,0,0,0.1); z-index: 100; min-width: 120px; border-radius: 4px;">
+                    <div class="sub-item" onclick="ui.bulkDelete()">Delete Selected</div>
+                    <div class="sub-item" onclick="window.print()">Print</div>
+                    <div class="sub-item" onclick="alert('Download...')">Download</div>
+                    <div class="sub-item" onclick="alert('Upload...')">Upload</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <input type="text" id="table-search" placeholder="Cari data..." onkeyup="ui.handleSearch(this.value)" style="padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px; width: 200px;">
+        </div>
+    </div>
+</template>
+
+<template id="tmpl-table-footer">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px; font-family: sans-serif;">
+        <div id="table-info" style="font-size: 0.9rem; color: #333; font-weight: 500;"></div>
+
+        <div style="display: flex; gap: 8px;">
+            <button id="btn-prev" onclick="ui.changePage(-1)" style="padding: 6px 12px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff;">&laquo; Prev</button>
+            <button id="btn-next" onclick="ui.changePage(1)" style="padding: 6px 12px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff;">Next &raquo;</button>
+        </div>
+    </div>
+</template>

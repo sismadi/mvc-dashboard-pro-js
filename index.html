@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVC Dashboard Pro</title>
+    <link rel="stylesheet" href="ui.css">
+</head>
+<body>
+    <div id="overlay" onclick="ui.closeDrawer()"></div>
+
+    <div class="sidebar" id="sidebar-menu"></div>
+
+    <div class="main-content">
+        <div id="header-box"></div>
+        <div id="stat-cards" class="row"></div>
+        <div id="main-tabs" class="shadow"></div>
+
+
+
+    <div id="drawer-form" class="drawer">
+        <div class="drawer-header">
+            <h3>Edit Data</h3>
+            <button onclick="ui.closeDrawer()">&times;</button>
+        </div>
+        <div id="form-container" class="drawer-body"></div>
+    </div>
+
+    <div class="row shadow" style="display:block; margin-top:25px;">
+        <h2>Daftar Kursus</h2>
+        <div id="table-container">
+            <div id="table-controls-container"></div>
+            <div id="table-data-container"></div>
+            <div id="table-footer-container"></div>
+        </div>
+    </div>
+
+    <script src="ui.js"></script>
+    <script>
+        async function init() {
+            // 1. Muat template terlebih dahulu
+            await d.loadTemplates();
+
+            // 2. Ambil data JSON
+            const res = await fetch('ui.json');
+            const data = await res.json();
+
+            // 3. Simpan ke variabel global agar bisa diakses oleh ui.refreshTable()
+            window.dashboardData = data;
+
+            // 4. Render komponen statis
+            d.gebi('sidebar-menu').innerHTML = ui.renderSidebar(dashboardData.menu);
+            d.gebi('header-box').innerHTML = ui.renderHeader(dashboardData.profile);
+            d.gebi('stat-cards').innerHTML = ui.renderStats(dashboardData.stats);
+
+            const tabs = [
+                { title: 'Progres Belajar', content: ui.renderProgress(dashboardData.progress, d.color(5)) },
+                { title: 'Informasi Akun', content: `<p>Email: ${dashboardData.profile.email}</p>` }
+            ];
+            d.gebi('main-tabs').innerHTML = ui.renderTabs(tabs);
+
+            // 5. Inisialisasi DataTable (PENTING: Gunakan initTable, bukan renderTable)
+            ui.initTable();
+
+            // 6. Jalankan perbaikan gambar
+            d.renderImage();
+        }
+        init();
+    </script>
+</body>
+</html>
