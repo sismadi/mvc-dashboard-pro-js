@@ -1,6 +1,3 @@
-# mvc-dashboard-pro-js
-A lightweight, high-performance MVC dashboard built with Vanilla JS. Featuring a custom DataTable with server-side logic simulation, dynamic templates, and responsive sidebar navigation.
-
 # MVC Dashboard Pro JS
 
 Dashboard administrasi modern yang dibangun menggunakan arsitektur **MVC (Model-View-Controller)** sederhana dengan **Vanilla JavaScript**. Proyek ini menekankan pada performa tinggi tanpa dependensi eksternal (Tanpa jQuery, Tanpa Bootstrap).
@@ -21,3 +18,39 @@ Dashboard administrasi modern yang dibangun menggunakan arsitektur **MVC (Model-
 1. **Clone repositori:**
    ```bash
    git clone [https://github.com/username/mvc-dashboard-pro-js.git](https://github.com/username/mvc-dashboard-pro-js.git)
+
+```
+
+2. **Jalankan melalui Local Server:**
+Karena proyek ini menggunakan `fetch()` untuk memuat file JSON dan HTML, Anda harus menjalankannya melalui server (misal: Live Server di VS Code atau Python `http.server`).
+```bash
+# Contoh menggunakan Python
+python -m http.server 8000
+
+```
+
+
+3. **Buka di Browser:**
+Akses `http://localhost:8000`
+
+## 📂 Struktur File
+
+* `index.html`: Struktur utama dan inisialisasi aplikasi.
+* `ui.js`: Logika kontroler, manipulasi DOM, dan state management untuk tabel.
+* `ui.html`: Kumpulan template (Header, Cards, Progress, Table, Menu).
+* `ui.css`: Desain responsif dan styling komponen dashboard.
+* `ui.json`: Sumber data dummy untuk profil, statistik, dan tabel.
+
+## 🛠️ Teknologi yang Digunakan
+
+* **HTML5 & CSS3** (Custom Properties & Flexbox).
+* **Vanilla JavaScript** (ES6+).
+* **DOMParser API** untuk pemrosesan template.
+
+## 📝 Lisensi
+
+Proyek ini dibuat untuk tujuan pembelajaran dan pengembangan dashboard internal yang ringan.
+
+Apakah Anda ingin saya membuatkan **dokumentasi teknis** tentang cara kerja sistem template `d.parse` atau menambahkan instruksi **deployment** ke GitHub Pages?
+
+```
